@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 function Untangle() {
 
@@ -7,8 +7,21 @@ function Untangle() {
     const [notes, setNotes] = useState('')
     const [tasks, setTasks] = useState([])
 
-    function handleSubmit() {
-        setTasks(prevTasks => [...prevTasks, {name:name, time:time, notes:notes}]);
+    useEffect(() => {
+        async function fetchTasks() {
+            const response = await fetch('http://localhost:3000/tasks')
+            const data = await response.json()
+            setTasks(data)
+        }
+        fetchTasks()
+    }, [])
+
+    async function handleSubmit() {
+        await fetch('http://localhost:3000/tasks', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name: name, deadline: time, notes: notes })
+        })
     }
 
     return (
@@ -27,7 +40,7 @@ function Untangle() {
             <button onClick={handleSubmit}>Add Task</button>
 
             <div>
-                {tasks.map((task, index) => <p key={index}>{task.name}, {task.time}, {task.notes}</p>)}
+                {tasks.map((task, index) => <p key={index}>{task.name}, {task.deadline}, {task.notes}</p>)}
             </div>
         </>
     )
