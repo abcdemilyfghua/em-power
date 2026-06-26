@@ -2,6 +2,7 @@ require('dotenv').config()
 
 const express = require('express')
 const app = express()
+app.use(express.json());
 
 const { createClient } = require('@supabase/supabase-js');
 const SUPABASE_URL = process.env.SUPABASE_URL
@@ -16,6 +17,19 @@ app.get('/tasks', async (req, res) => {
     if (error) return res.status(500).json({ error: error.message })
     res.json(data)
 })
+
+app.post('/tasks', async (req, res) => {
+    const { name, deadline, notes } = req.body;
+    const { data, error} = await supabase
+        .from('tasks')
+        .insert({ name, deadline, notes});
+
+    if (error) return res.status(500).json({ error: error.message })
+    res.status(201).json({
+        message: "Task added successfully",
+        receivedData: { name, deadline, notes }
+    });
+});
 
 app.listen(3000, () => {
     console.log('server running on port 3000')
