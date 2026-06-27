@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import ReactMarkdown from 'react-markdown'
 import './Untangle.css'
 
 function Untangle() {
@@ -90,7 +91,7 @@ function Untangle() {
 
             <div>
                 <label>Em's Response:</label>
-                {emResponse}
+                <ReactMarkdown>{emResponse}</ReactMarkdown>
             </div>
         </div>
     )

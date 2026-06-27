@@ -20,6 +20,7 @@ app.get('/tasks', async (req, res) => {
     const { data, error } = await supabase
         .from('tasks')
         .select('*')
+        .eq('completed', false)
 
     if (error) return res.status(500).json({ error: error.message })
     res.json(data)
