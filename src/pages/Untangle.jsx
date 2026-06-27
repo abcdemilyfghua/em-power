@@ -64,8 +64,12 @@ function Untangle() {
                 <button className="btn-em" onClick={askEm}>Ask Em</button>
             </div>
 
-            <div>
-                {tasks.map((task, index) => <p key={index}>{task.name}, {task.deadline}, {task.notes}</p>)}
+            <div className="task-list">
+                {tasks.map((task, index) => <div className="task-item" key={index}>
+                    <input className="task-checkbox" type="checkbox" />
+                    <span className="task-name">{task.name}</span>
+                    <button>X</button>
+                </div>)}
             </div>
 
             <div>

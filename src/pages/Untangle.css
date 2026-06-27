@@ -1,9 +1,22 @@
+:root {
+    --bg: #FAF8F5;
+    --surface: #FFFFFF;
+    --text: #3B1F0E;
+    --text-light: #A0714F;
+
+    --yellow: #F5D97E;
+    --coral: #FF7096;
+    --green: #2c7324;
+    --blue: #1f91d3;
+    --lavender: #C5B4E3;
+}
+
 .untangle {
     font-size: 24px;
     max-width: 1000px;
     padding: 48px 24px;
     margin: 0 auto;
-    color: var(--brown);
+    color: var(--text);
     background: var(--bg);
     margin-bottom: 24px;
 }
@@ -24,7 +37,7 @@
 }
 
 .btn-primary {
-    font-size: 16px;
+    font-size: 20px;
     padding: 5px 10px;
     border-radius: 5px;
     color: var(--surface);
@@ -42,7 +55,7 @@
 }
 
 .btn-em {
-    font-size: 16px;
+    font-size: 20px;
     padding: 5px 10px;
     border-radius: 5px;
     color: var(--brown);
@@ -62,4 +75,41 @@
 .button-row {
     display: flex;
     justify-content: space-between;
+}
+
+.task-list {
+    padding: 5px 10px;
+}
+
+.task-item {
+    display: flex;
+    font-size: 24px;
+    padding: 5px 10px;
+    color: var(--brown-light);
+    border-bottom: 1px solid var(--brown-light);
+    align-items: center;
+    justify-content: space-between;
+    text-align: left;
+
+    &:hover {
+    color: var(--brown);
+    cursor: pointer;
+    }
+    &:focus-visible {
+    outline: 2px solid var(--brown);
+    outline-offset: 2px;
+    }
+}
+
+.task-name {
+    display: flex;
+    flex: 1;
+    padding-left: 12px
+}
+
+.task-checkbox {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    accent-color: var(--brown);
 }
