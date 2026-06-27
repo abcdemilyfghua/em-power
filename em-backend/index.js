@@ -79,3 +79,23 @@ app.delete('/tasks/:id', async (req, res) => {
 app.listen(3000, () => {
     console.log('server running on port 3000')
 })
+
+app.post('/rants', async (req, res) => {
+    console.log(req.body)
+    const message = await anthropic.messages.create({
+        model: 'claude-sonnet-4-6',
+        max_tokens: 1024,
+        system: 'Read this entry and identify what triggered the feelings, whether negative or positive. Negative examples: comparison to peers, imposter syndrome, fear of falling behind, self-doubt, academic anxiety, career uncertainty. Positive examples: win, confidence, career progress, inspiration, pride, excitement. Return only the trigger tags as a short comma-separated list, nothing else.',
+        messages: [
+            { role: 'user', content: `${JSON.stringify(req.body.rant)}` }
+        ]
+    })
+    const { error } = await supabase
+        .from('rants')
+        .insert({ body: req.body.rant, trigger_tags: message.content[0].text })
+        console.log(error)
+    if (error) return res.status(500).json({ error: error.message })
+    res.status(200).json({
+        message: "Rant recieved.",
+    });
+})
