@@ -18,6 +18,8 @@ function Untangle() {
         fetchTasks()
     }, [])
 
+    console.log(tasks)
+
     async function handleSubmit() {
         await fetch('http://localhost:3000/tasks', {
             method: 'POST',
@@ -28,6 +30,20 @@ function Untangle() {
         setName('')
         setTime('')
         setNotes('')
+    }
+
+    async function handleDelete(id) {
+        await fetch(`http://localhost:3000/tasks/${id}`, {
+            method: 'DELETE'
+        })
+        setTasks(prevTasks => prevTasks.filter(task => task.id !== id))
+    }
+
+    async function handleComplete(id) {
+        await fetch(`http://localhost:3000/tasks/${id}`, {
+            method: 'PATCH'
+        })
+        setTasks(prevTasks => prevTasks.filter(task => task.id !== id))
     }
 
     async function askEm() {
@@ -66,9 +82,9 @@ function Untangle() {
 
             <div className="task-list">
                 {tasks.map((task, index) => <div className="task-item" key={index}>
-                    <input className="task-checkbox" type="checkbox" />
+                    <input className="task-checkbox" type="checkbox" onChange={() => handleComplete(task.id)} />
                     <span className="task-name">{task.name}</span>
-                    <button>X</button>
+                    <button onClick={() => handleDelete(task.id)}>X</button>
                 </div>)}
             </div>
 

@@ -52,6 +52,29 @@ app.post('/prioritize', async (req, res) => {
     res.json(message.content[0].text)
 })
 
+app.patch('/tasks/:id', async (req, res) => {
+    const { error } = await supabase
+        .from('tasks')
+        .update({ completed: true })
+        .eq('id', req.params.id);
+    if (error) return res.status(500).json({ error: error.message })
+    res.status(200).json({
+        message: "Task completed YAY",
+    });
+})
+
+app.delete('/tasks/:id', async (req, res) => {
+    console.log(req.params.id)
+    const { error } = await supabase
+        .from('tasks')
+        .delete()
+        .eq('id', req.params.id);
+    if (error) return res.status(500).json({ error: error.message })
+    res.status(200).json({
+        message: "Task deleted successfully"
+    });
+})
+
 app.listen(3000, () => {
     console.log('server running on port 3000')
 })
