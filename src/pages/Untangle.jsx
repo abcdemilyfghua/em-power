@@ -44,17 +44,25 @@ function Untangle() {
         <div className="untangle">
             <h1>Untangle</h1>
 
-            <label htmlFor="name">Task Name:</label>
-            <input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} />
-
-            <label htmlFor="time">Deadline to complete:</label>
-            <input type="date" id="time" value={time} onChange={(e) => setTime(e.target.value)} />
-
-            <label htmlFor="notes">Notes:</label>
-            <textarea type="text" id="notes" value={notes} onChange={(e) => setNotes(e.target.value)} />
+            <div className="form-group">
+                <label htmlFor="name">Task Name:</label>
+                <input className="form-input" type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} />
+            </div>
             
-            <button onClick={handleSubmit}>Add Task</button>
-            <button onClick={askEm}>Ask Em</button>
+            <div className="form-group">
+                <label htmlFor="time">Deadline to complete:</label>
+                <input className="form-input" type="date" id="time" value={time} onChange={(e) => setTime(e.target.value)} />
+            </div>
+            
+            <div className="form-group">
+                <label htmlFor="notes">Notes:</label>
+                <textarea className="form-input" type="text" id="notes" value={notes} onChange={(e) => setNotes(e.target.value)} />
+            </div>
+            
+            <div className="button-row">
+                <button className="btn-primary" onClick={handleSubmit}>Add Task</button>
+                <button className="btn-em" onClick={askEm}>Ask Em</button>
+            </div>
 
             <div>
                 {tasks.map((task, index) => <p key={index}>{task.name}, {task.deadline}, {task.notes}</p>)}

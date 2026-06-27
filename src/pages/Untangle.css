@@ -1,9 +1,65 @@
 .untangle {
-    font-size: 20px;
+    font-size: 24px;
     max-width: 1000px;
     padding: 48px 24px;
     margin: 0 auto;
     color: var(--brown);
     background: var(--bg);
     margin-bottom: 24px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--brown-light);
+    border-radius: 5px;
+    background: var(--bg);
+}
+
+.btn-primary {
+    font-size: 16px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: var(--surface);
+    background: var(--brown-light);
+    border: 3px solid transparent;
+    margin-bottom: 24px;
+
+    &:hover {
+    border-color: var(--brown);
+    }
+    &:focus-visible {
+    outline: 2px solid var(--brown);
+    outline-offset: 2px;
+    }
+}
+
+.btn-em {
+    font-size: 16px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: var(--brown);
+    background: var(--yellow);
+    border: 3px solid transparent;
+    margin-bottom: 24px;
+
+    &:hover {
+    border-color: var(--brown);
+    }
+    &:focus-visible {
+    outline: 2px solid var(--brown);
+    outline-offset: 2px;
+    }
+}
+
+.button-row {
+    display: flex;
+    justify-content: space-between;
 }
