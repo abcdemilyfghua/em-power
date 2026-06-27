@@ -23,6 +23,7 @@ function Untangle() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ name: name, deadline: time, notes: notes })
         })
+        setTasks(prevTasks => [...prevTasks, {name, time, notes}])
     }
 
     async function askEm() {
