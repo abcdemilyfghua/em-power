@@ -1,0 +1,9 @@
+.untangle {
+    font-size: 20px;
+    max-width: 1000px;
+    padding: 48px 24px;
+    margin: 0 auto;
+    color: var(--brown);
+    background: var(--bg);
+    margin-bottom: 24px;
+}
