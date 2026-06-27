@@ -24,6 +24,9 @@ function Untangle() {
             body: JSON.stringify({ name: name, deadline: time, notes: notes })
         })
         setTasks(prevTasks => [...prevTasks, {name, time, notes}])
+        setName('')
+        setTime('')
+        setNotes('')
     }
 
     async function askEm() {
