@@ -6,6 +6,7 @@ function Untangle() {
     const [time, setTime] = useState('')
     const [notes, setNotes] = useState('')
     const [tasks, setTasks] = useState([])
+    const [emResponse, setEmResponse] = useState('')
 
     useEffect(() => {
         async function fetchTasks() {
@@ -24,6 +25,16 @@ function Untangle() {
         })
     }
 
+    async function askEm() {
+        const reply = await fetch('http://localhost:3000/prioritize', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ tasks: tasks })
+        })
+        const emReply = await reply.json()
+        setEmResponse(emReply)
+    }
+
     return (
         <>
             <h1>Untangle</h1>
@@ -38,9 +49,15 @@ function Untangle() {
             <textarea type="text" id="notes" value={notes} onChange={(e) => setNotes(e.target.value)} />
             
             <button onClick={handleSubmit}>Add Task</button>
+            <button onClick={askEm}>Ask Em</button>
 
             <div>
                 {tasks.map((task, index) => <p key={index}>{task.name}, {task.deadline}, {task.notes}</p>)}
+            </div>
+
+            <div>
+                <label>Em's Response:</label>
+                {emResponse}
             </div>
         </>
     )
