@@ -1,24 +1,14 @@
-:root {
-    --bg: #FAF8F5;
-    --surface: #FFFFFF;
-    --text: #3B1F0E;
-    --text-light: #A0714F;
-
-    --yellow: #F5D97E;
-    --coral: #FF7096;
-    --green: #2c7324;
-    --blue: #1f91d3;
-    --lavender: #C5B4E3;
-}
-
 .untangle {
-    font-size: 24px;
+    font-size: 18px;
     max-width: 1000px;
     padding: 48px 24px;
     margin: 0 auto;
     color: var(--text);
     background: var(--bg);
-    margin-bottom: 24px;
+}
+
+.untangle h1 {
+    text-align: center;
 }
 
 .form-group {
@@ -31,85 +21,84 @@
 .form-input {
     width: 100%;
     padding: 10px;
-    border: 1px solid var(--brown-light);
+    border: 1px solid var(--text-light);
     border-radius: 5px;
-    background: var(--bg);
+    background: var(--surface);
+    color: var(--text);
+    font-size: 16px;
 }
 
 .btn-primary {
-    font-size: 20px;
-    padding: 5px 10px;
-    border-radius: 5px;
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 8px;
     color: var(--surface);
-    background: var(--brown-light);
-    border: 3px solid transparent;
-    margin-bottom: 24px;
+    background: var(--hibiscus);
+    border: none;
+    cursor: pointer;
 
     &:hover {
-    border-color: var(--brown);
+        background: var(--mango);
     }
     &:focus-visible {
-    outline: 2px solid var(--brown);
-    outline-offset: 2px;
+        outline: 2px solid var(--text);
+        outline-offset: 2px;
     }
 }
 
 .btn-em {
-    font-size: 20px;
-    padding: 5px 10px;
-    border-radius: 5px;
-    color: var(--brown);
-    background: var(--yellow);
-    border: 3px solid transparent;
-    margin-bottom: 24px;
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    color: var(--surface);
+    background: var(--mango);
+    border: none;
+    cursor: pointer;
 
     &:hover {
-    border-color: var(--brown);
+        background: var(--hibiscus);
     }
     &:focus-visible {
-    outline: 2px solid var(--brown);
-    outline-offset: 2px;
+        outline: 2px solid var(--text);
+        outline-offset: 2px;
     }
 }
 
 .button-row {
     display: flex;
     justify-content: space-between;
+    margin-top: 8px;
 }
 
 .task-list {
-    padding: 5px 10px;
+    margin-top: 32px;
+    padding: 0;
 }
 
 .task-item {
     display: flex;
-    font-size: 24px;
-    padding: 5px 10px;
-    color: var(--brown-light);
-    border-bottom: 1px solid var(--brown-light);
+    font-size: 18px;
+    padding: 12px 8px;
+    color: var(--text-light);
+    border-bottom: 1px solid var(--blue);
     align-items: center;
     justify-content: space-between;
-    text-align: left;
 
     &:hover {
-    color: var(--brown);
-    cursor: pointer;
-    }
-    &:focus-visible {
-    outline: 2px solid var(--brown);
-    outline-offset: 2px;
+        color: var(--text);
+        cursor: pointer;
+        background: var(--surface);
     }
 }
 
 .task-name {
-    display: flex;
     flex: 1;
-    padding-left: 12px
+    padding-left: 12px;
 }
 
 .task-checkbox {
-    width: 24px;
-    height: 24px;
+    width: 18px;
+    height: 18px;
     cursor: pointer;
-    accent-color: var(--brown);
+    accent-color: var(--green);
 }
